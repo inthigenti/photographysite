@@ -4,16 +4,137 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Photography Landing Page</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <header>
-      <a href="#" class="logo">Daniel Riviera</a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#book-a-shoot">Book a Shoot</a></li>
-      </ul>
+      <nav aria-label="Primary">
+        <a href="#" class="logo">Carlos Riviera</a>
+        <ul class="nav-links">
+          <li><a href="#gallery">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
+
+    <main>
+      <section id="hero" class="hero">
+        <h1>
+          <span>Carlos Riviera</span><span>Photographer</span
+          ><span>Los Angeles &amp; Lisbon</span>
+        </h1>
+      </section>
+
+      <section id="work" class="gallery">
+        <div class="work-head">
+          <h2>Selected Work</h2>
+
+          <!-- Fieldset: groups the five filters together -->
+          <fieldset class="filters">
+            <legend>Filter work</legend>
+
+            <input type="radio" name="filter" id="filter-all" checked />
+            <label for="filter-all">All</label>
+
+            <input type="radio" name="filter" id="filter-portrait" />
+            <label for="filter-portrait">Portrait</label>
+
+            <input type="radio" name="filter" id="filter-street" />
+            <label for="filter-street">Street</label>
+
+            <input type="radio" name="filter" id="filter-editorial" />
+            <label for="filter-editorial">Editorial</label>
+
+            <input type="radio" name="filter" id="filter-travel" />
+            <label for="filter-travel">Travel</label>
+          </fieldset>
+        </div>
+
+        <div class="grid">
+          <figure class="shot portrait">
+            <a href="#photo-1">
+              <img
+                src="Images/portrait-1.jpg"
+                alt="hand pouring drink from bottle to glass cup"
+              />
+            </a>
+            <figcaption>
+              <span>Above the Valley </span> <span>Portrait, 2025</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot portrait">
+            <a href="#photo-2">
+              <img src="Images/portrait-2.jpg" alt="vibrant looking flower" />
+            </a>
+            <figcaption>
+              <span>Marta, North Shore</span> <span>Street, 2025</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot portrait">
+            <a href="#photo-3">
+              <img src="Images/portrait-3.jpg" alt="beauty model snapshot" />
+            </a>
+            <figcaption>
+              <span>Roksolana</span> <span>Editorial, 2023</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot portrait">
+            <a href="#photo-4">
+              <img src="Images/landscape-1.jpg" alt="canon camera on blanket" />
+            </a>
+            <figcaption>
+              <span>My room</span> <span>Travel, 2023</span>
+            </figcaption>
+          </figure>
+
+          <figure class="shot portrait">
+            <a href="#photo-5">
+              <img
+                src="Images/landscape-2.jpg"
+                alt="wooden bench under a red tree"
+              />
+            </a>
+            <figcaption>
+              <span>Canadian Maple Tree</span> <span>Street, 2023</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div id="photo-1" class="lightbox">
+          <a href="#work" class="lightbox-close">Close</a>
+          <img
+            src="Images/portrait-1.jpg"
+            alt="Hand pouring a drink from a bottle into a glass"
+          />
+        </div>
+
+        <div id="photo-2" class="lightbox">
+          <a href="#work" class="lightbox-close">Close</a>
+          <img src="Images/portrait-2.jpg" alt="Vibrant looking flower" />
+        </div>
+
+        <div id="photo-3" class="lightbox">
+          <a href="#work" class="lightbox-close">Close</a>
+          <img src="Images/portrait-3.jpg" alt="beauty model snapshot" />
+        </div>
+
+        <div id="photo-4" class="lightbox">
+          <a href="#work" class="lightbox-close">Close</a>
+          <img src="Images/landscape-1.jpg" alt="canon camera on blanket" />
+        </div>
+
+        <div id="photo-5" class="lightbox">
+          <a href="#work" class="lightbox-close">Close</a>
+          <img
+            src="Images/landscape-2.jpg"
+            alt="wooden bench under a red tree"
+          />
+        </div>
+      </section>
+    </main>
   </body>
 </html>
