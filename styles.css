@@ -1,0 +1,551 @@
+/* =========================================
+   1. Variables
+   ========================================= */
+
+:root {
+  /* Colours */
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-muted: #767676; /* secondary text */
+  --color-line: #e4e4e4; /* dividers and image placeholders */
+
+  /* Fonts */
+  --font-display: "Anton", sans-serif; /* headings */
+  --font-text: "DM Sans", sans-serif; /* everything else */
+
+  /* Side space on every section: min 16px, grows with screen, max 32px */
+  --gutter: clamp(16px, 2.2vw, 32px);
+}
+
+
+/* =========================================
+   2. Base and reset
+   ========================================= */
+
+/* Padding and borders sit inside an element's width, not added to it */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* stop headings hiding under the sticky header */
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-text);
+  line-height: 1.55;
+}
+
+/* Remove browser default spacing */
+h1,
+h2,
+p,
+ul,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%; /* never wider than its container */
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Form elements don't inherit the page font by default */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* Section headings: Selected Work, About, Contact */
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400; /* Anton has one weight; stops a fake bold */
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================
+   3. Header and nav
+   ========================================= */
+
+header {
+  position: sticky; /* stays at the top while scrolling */
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg);
+}
+
+/* Logo on the left, links on the right */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  height: 60px;
+  padding-inline: var(--gutter);
+}
+
+.logo {
+  font-weight: 500;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a:hover {
+  color: var(--color-muted);
+}
+
+
+/* =========================================
+   4. Hero
+   ========================================= */
+
+.hero {
+  padding: 32px var(--gutter) clamp(64px, 9vw, 128px);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(40px, 6.4vw, 116px);
+  line-height: 0.98; /* lines sit close without touching */
+  letter-spacing: 0.006em;
+  text-transform: uppercase;
+}
+
+/* Each span on its own line */
+.hero h1 span {
+  display: block;
+}
+
+
+/* =========================================
+   5. Gallery
+   ========================================= */
+
+.gallery {
+  padding-inline: var(--gutter);
+}
+
+.gallery h2 {
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+/* Phone: one column. Tablet and desktop layouts are in section 10 */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* minmax(0, …) prevents overflow */
+  gap: 40px 16px;
+  padding-bottom: clamp(80px, 10vw, 144px);
+}
+
+/* One photo with its caption underneath */
+.shot {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* The link is the fixed-shape box the photo fills */
+.shot a {
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-line);
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the box, crop the edges, never stretch */
+  transition: opacity 0.3s;
+}
+
+.shot a:hover img {
+  opacity: 0.88;
+}
+
+/* Title on the left, category on the right */
+.shot figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.shot figcaption span:last-child {
+  color: var(--color-muted);
+  text-align: right;
+}
+
+/* Landscape photos 4 and 5 are wide on phones */
+.shot:nth-child(4) a,
+.shot:nth-child(5) a {
+  aspect-ratio: 3 / 2;
+}
+
+
+/* =========================================
+   6. Full-size viewer (lightbox)
+   ========================================= */
+
+/* Hidden until its id is in the address, e.g. #photo-1 */
+.lightbox {
+  display: none;
+}
+
+.lightbox:target {
+  position: fixed;
+  inset: 0; /* cover the whole screen */
+  z-index: 20; /* above the header (10) */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 64px var(--gutter) 32px;
+  background: var(--color-bg);
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0; /* lets the image shrink inside the flex container */
+  object-fit: contain; /* show the whole photo, no cropping */
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: var(--gutter);
+  font-size: 14px;
+}
+
+.lightbox-close:hover {
+  color: var(--color-muted);
+}
+
+/* Stop the page scrolling behind an open viewer */
+html:has(.lightbox:target) {
+  overflow: hidden;
+}
+
+
+/* =========================================
+   7. About
+   ========================================= */
+
+/* Phone and tablet: stacked. Desktop columns are in section 10 */
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px 16px;
+  padding: 0 var(--gutter) clamp(80px, 10vw, 144px);
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 576px; /* keeps lines a readable length */
+}
+
+/* Larger opening line */
+.lede {
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.about-text p:not(.lede) {
+  color: var(--color-muted);
+}
+
+/* "Book a shoot" link */
+.about-text a {
+  align-self: flex-start; /* only as wide as its text */
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.about-text a:hover {
+  color: var(--color-muted);
+}
+
+.about img {
+  width: 100%;
+  max-width: 352px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+
+
+/* =========================================
+   8. Contact and form
+   ========================================= */
+
+/* Phone and tablet: stacked. Desktop columns are in section 10 */
+.contact {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px 16px;
+  padding: 0 var(--gutter) clamp(80px, 10vw, 144px);
+}
+
+/* Heading and contact details */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-info ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--color-muted);
+}
+
+.contact-info a {
+  color: var(--color-text);
+  overflow-wrap: anywhere; /* long email can wrap on small phones */
+}
+
+.contact-info a:hover {
+  color: var(--color-muted);
+}
+
+/* Form: one column on phones, two from tablet up (section 10) */
+form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px 16px;
+}
+
+/* Label above its box */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field label {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* Boxes become a single underline */
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  border-radius: 0; /* Safari rounds corners by default */
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Active field: darker, thicker underline replaces the outline */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-text);
+  box-shadow: 0 1px 0 0 var(--color-text);
+}
+
+/* Custom dropdown arrow (small SVG chevron) */
+.field select {
+  appearance: none;
+  padding-right: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23111111' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+
+form button {
+  justify-self: end; /* sits on the right */
+  padding: 14px 24px;
+  border: 1px solid var(--color-text);
+  background: var(--color-text);
+  color: var(--color-bg);
+  cursor: pointer;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
+}
+
+/* Colours swap on hover */
+form button:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+
+/* =========================================
+   9. Footer
+   ========================================= */
+
+/* One row on desktop; wraps on its own on phones */
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px 32px;
+  padding: 24px var(--gutter) 32px;
+  border-top: 1px solid var(--color-line);
+  font-size: 14px;
+}
+
+.site-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+
+.site-footer a:hover {
+  color: var(--color-muted);
+}
+
+/* Photo credit */
+.site-footer p:last-child {
+  color: var(--color-muted);
+}
+
+.site-footer p:last-child a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================
+   10. Responsive
+   Keep these last so they override the rules above.
+   ========================================= */
+
+/* Phone: 479px and narrower */
+@media (max-width: 479px) {
+  nav {
+    font-size: 14px;
+  }
+
+  .nav-links {
+    gap: 16px;
+  }
+}
+
+/* Tablet: 640px and wider */
+@media (min-width: 640px) {
+  /* Gallery: 2 columns, last photo full width */
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .shot:nth-child(4) a {
+    aspect-ratio: 4 / 5;
+  }
+
+  .shot:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  /* Form: 2 columns, message box and button full width */
+  form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field:has(textarea),
+  form button {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Desktop: 1024px and wider */
+@media (min-width: 1024px) {
+  /* Gallery: a row of 3 tall photos, then a row of 2 wide ones */
+  .grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    row-gap: 56px;
+  }
+
+  .shot {
+    grid-column: span 2;
+  }
+
+  .shot:nth-child(4),
+  .shot:nth-child(5) {
+    grid-column: span 3;
+  }
+
+  .shot:nth-child(4) a {
+    aspect-ratio: 3 / 2;
+  }
+
+  /* About: heading, text and photo in thirds, under the gallery photos */
+  .about {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .about h2 {
+    grid-column: 1 / 5;
+  }
+
+  .about-text {
+    grid-column: 5 / 9;
+  }
+
+  .about img {
+    grid-column: 9 / 13;
+    max-width: none;
+  }
+
+  /* Contact: details on the left, form lined up with the About text */
+  .contact {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .contact-info {
+    grid-column: 1 / 5;
+  }
+
+  form {
+    grid-column: 5 / 13;
+  }
+}
