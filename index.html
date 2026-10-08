@@ -3,15 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photography Landing Page</title>
+    <title>Carlos Riviera — Photographer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,300..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
+    <header id="top">
       <nav aria-label="Primary">
-        <a href="#" class="logo">Carlos Riviera</a>
+        <a href="#top" class="logo">Carlos Riviera</a>
         <ul class="nav-links">
-          <li><a href="#gallery">Work</a></li>
+          <li><a href="#work">Work</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -21,8 +27,9 @@
     <main>
       <section id="hero" class="hero">
         <h1>
-          <span>Carlos Riviera</span><span>Photographer</span
-          ><span>Los Angeles &amp; Lisbon</span>
+          <span>Carlos Riviera</span>
+          <span>Photographer</span>
+          <span>Los Angeles &amp; Lisbon</span>
         </h1>
       </section>
 
@@ -64,38 +71,51 @@
             </figcaption>
           </figure>
 
-          <figure class="shot portrait">
+          <figure class="shot street">
             <a href="#photo-2">
-              <img src="Images/portrait-2.jpg" alt="vibrant looking flower" />
+              <img
+                src="Images/portrait-2.jpg"
+                alt="vibrant looking flower"
+                loading="lazy"
+              />
             </a>
             <figcaption>
               <span>Marta, North Shore</span> <span>Street, 2025</span>
             </figcaption>
           </figure>
 
-          <figure class="shot portrait">
+          <figure class="shot editorial">
             <a href="#photo-3">
-              <img src="Images/portrait-3.jpg" alt="beauty model snapshot" />
+              <img
+                src="Images/portrait-3.jpg"
+                alt="beauty model snapshot"
+                loading="lazy"
+              />
             </a>
             <figcaption>
               <span>Roksolana</span> <span>Editorial, 2023</span>
             </figcaption>
           </figure>
 
-          <figure class="shot portrait">
+          <figure class="shot travel">
             <a href="#photo-4">
-              <img src="Images/landscape-1.jpg" alt="canon camera on blanket" />
+              <img
+                src="Images/landscape-1.jpg"
+                alt="canon camera on blanket"
+                loading="lazy"
+              />
             </a>
             <figcaption>
               <span>My room</span> <span>Travel, 2023</span>
             </figcaption>
           </figure>
 
-          <figure class="shot portrait">
+          <figure class="shot street">
             <a href="#photo-5">
               <img
                 src="Images/landscape-2.jpg"
                 alt="wooden bench under a red tree"
+                loading="lazy"
               />
             </a>
             <figcaption>
@@ -109,22 +129,35 @@
           <img
             src="Images/portrait-1.jpg"
             alt="Hand pouring a drink from a bottle into a glass"
+            loading="lazy"
           />
         </div>
 
         <div id="photo-2" class="lightbox">
           <a href="#work" class="lightbox-close">Close</a>
-          <img src="Images/portrait-2.jpg" alt="Vibrant looking flower" />
+          <img
+            src="Images/portrait-2.jpg"
+            alt="Vibrant looking flower"
+            loading="lazy"
+          />
         </div>
 
         <div id="photo-3" class="lightbox">
           <a href="#work" class="lightbox-close">Close</a>
-          <img src="Images/portrait-3.jpg" alt="beauty model snapshot" />
+          <img
+            src="Images/portrait-3.jpg"
+            alt="beauty model snapshot"
+            loading="lazy"
+          />
         </div>
 
         <div id="photo-4" class="lightbox">
           <a href="#work" class="lightbox-close">Close</a>
-          <img src="Images/landscape-1.jpg" alt="canon camera on blanket" />
+          <img
+            src="Images/landscape-1.jpg"
+            alt="canon camera on blanket"
+            loading="lazy"
+          />
         </div>
 
         <div id="photo-5" class="lightbox">
@@ -132,9 +165,99 @@
           <img
             src="Images/landscape-2.jpg"
             alt="wooden bench under a red tree"
+            loading="lazy"
           />
         </div>
       </section>
+
+      <section id="about" class="about">
+        <h2>About</h2>
+
+        <div class="about-text">
+          <p class="lede">
+            I make honest pictures of people and the places that shape them.
+          </p>
+          <p>
+            Born in Lisbon, based in Los Angeles. I shoot portrait, editorial
+            and street work on film and digital.
+          </p>
+          <a href="#contact">Book a shoot</a>
+        </div>
+
+        <img
+          src="Images/carlos.jpg"
+          alt="Carlos holding a camera"
+          loading="lazy"
+        />
+      </section>
+
+      <section id="contact" class="contact">
+        <div class="contact-info">
+          <h2>Contact</h2>
+          <ul>
+            <li>
+              <a href="mailto:hello@carlosriviera.com"
+                >hello@carlosriviera.com</a
+              >
+            </li>
+            <li><a href="https://www.instagram.com/">Instagram</a></li>
+            <li>Los Angeles, CA</li>
+          </ul>
+        </div>
+
+        <form
+          action="mailto:hello@carlosriviera.com"
+          method="post"
+          enctype="text/plain"
+        >
+          <div class="field">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              autocomplete="name"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="enquiry">Enquiry</label>
+            <select id="enquiry" name="enquiry">
+              <option>Shoot booking</option>
+              <option>Editorial commission</option>
+              <option>Something else</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+
+          <button type="submit">Send enquiry</button>
+        </form>
+      </section>
     </main>
+    <footer class="site-footer">
+      <p>&copy; 2026 Carlos Riviera</p>
+      <ul>
+        <li><a href="https://www.instagram.com/">Instagram</a></li>
+        <li><a href="mailto:hello@carlosriviera.com">Email</a></li>
+        <li><a href="#top">Back to top</a></li>
+      </ul>
+      <p>Photos from <a href="https://pxhere.com">Pxhere</a></p>
+    </footer>
   </body>
 </html>
