@@ -67,6 +67,21 @@ a {
   text-decoration: none;
 }
 
+/* Hidden above the page until a keyboard user tabs to it */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: var(--gutter);
+  z-index: 30;
+  padding: 8px 14px;
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+.skip-link:focus {
+  top: 8px;
+}
+
 /* Form elements don't inherit the page font by default */
 button,
 input,
@@ -547,5 +562,12 @@ form button:hover {
 
   form {
     grid-column: 5 / 13;
+  }
+}
+
+/* Reduced motion: jump instead of gliding, for people who turn off animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

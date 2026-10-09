@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header id="top">
       <nav aria-label="Primary">
         <a href="#top" class="logo">Carlos Riviera</a>
@@ -24,7 +26,7 @@
       </nav>
     </header>
 
-    <main>
+    <main id="main">
       <section id="hero" class="hero">
         <h1>
           <span>Carlos Riviera</span>
@@ -33,19 +35,19 @@
         </h1>
       </section>
 
-      <section id="work" class="gallery">
-        <h2>Selected Work</h2>
+      <section id="work" class="gallery" aria-labelledby="work-title">
+        <h2 id="work-title">Selected Work</h2>
 
         <div class="grid">
           <figure class="shot">
             <a href="#photo-1">
               <img
                 src="Images/portrait-1.jpg"
-                alt="hand pouring drink from bottle to glass cup"
+                alt="A hand pouring beer from a bottle into a pint glass, against a dark background"
               />
             </a>
             <figcaption>
-              <span>Above the Valley </span> <span>Portrait, 2025</span>
+              <span>Above the Valley</span> <span>Portrait, 2025</span>
             </figcaption>
           </figure>
 
@@ -53,7 +55,7 @@
             <a href="#photo-2">
               <img
                 src="Images/portrait-2.jpg"
-                alt="vibrant looking flower"
+                alt="Blue bellflowers on thin stems against a soft green background"
                 loading="lazy"
               />
             </a>
@@ -66,7 +68,7 @@
             <a href="#photo-3">
               <img
                 src="Images/portrait-3.jpg"
-                alt="beauty model snapshot"
+                alt="Studio portrait of a woman with long brown hair, against a dark background"
                 loading="lazy"
               />
             </a>
@@ -79,7 +81,7 @@
             <a href="#photo-4">
               <img
                 src="Images/landscape-1.jpg"
-                alt="canon camera on blanket"
+                alt="A Canon lens with its cap on, resting in a canvas camera bag"
                 loading="lazy"
               />
             </a>
@@ -92,7 +94,7 @@
             <a href="#photo-5">
               <img
                 src="Images/landscape-2.jpg"
-                alt="wooden bench under a red tree"
+                alt="Two wooden park benches on a path covered in orange autumn leaves"
                 loading="lazy"
               />
             </a>
@@ -102,54 +104,54 @@
           </figure>
         </div>
 
-        <div id="photo-1" class="lightbox">
-          <a href="#work" class="lightbox-close">Close</a>
+        <div id="photo-1" class="lightbox" role="dialog" aria-label="Above the Valley, full size">
+          <a href="#work" class="lightbox-close" aria-label="Close full-size image">Close</a>
           <img
             src="Images/portrait-1.jpg"
-            alt="Hand pouring a drink from a bottle into a glass"
+            alt="A hand pouring beer from a bottle into a pint glass, against a dark background"
             loading="lazy"
           />
         </div>
 
-        <div id="photo-2" class="lightbox">
-          <a href="#work" class="lightbox-close">Close</a>
+        <div id="photo-2" class="lightbox" role="dialog" aria-label="Marta, North Shore, full size">
+          <a href="#work" class="lightbox-close" aria-label="Close full-size image">Close</a>
           <img
             src="Images/portrait-2.jpg"
-            alt="Vibrant looking flower"
+            alt="Blue bellflowers on thin stems against a soft green background"
             loading="lazy"
           />
         </div>
 
-        <div id="photo-3" class="lightbox">
-          <a href="#work" class="lightbox-close">Close</a>
+        <div id="photo-3" class="lightbox" role="dialog" aria-label="Roksolana, full size">
+          <a href="#work" class="lightbox-close" aria-label="Close full-size image">Close</a>
           <img
             src="Images/portrait-3.jpg"
-            alt="beauty model snapshot"
+            alt="Studio portrait of a woman with long brown hair, against a dark background"
             loading="lazy"
           />
         </div>
 
-        <div id="photo-4" class="lightbox">
-          <a href="#work" class="lightbox-close">Close</a>
+        <div id="photo-4" class="lightbox" role="dialog" aria-label="My room, full size">
+          <a href="#work" class="lightbox-close" aria-label="Close full-size image">Close</a>
           <img
             src="Images/landscape-1.jpg"
-            alt="canon camera on blanket"
+            alt="A Canon lens with its cap on, resting in a canvas camera bag"
             loading="lazy"
           />
         </div>
 
-        <div id="photo-5" class="lightbox">
-          <a href="#work" class="lightbox-close">Close</a>
+        <div id="photo-5" class="lightbox" role="dialog" aria-label="Canadian Maple Tree, full size">
+          <a href="#work" class="lightbox-close" aria-label="Close full-size image">Close</a>
           <img
             src="Images/landscape-2.jpg"
-            alt="wooden bench under a red tree"
+            alt="Two wooden park benches on a path covered in orange autumn leaves"
             loading="lazy"
           />
         </div>
       </section>
 
-      <section id="about" class="about">
-        <h2>About</h2>
+      <section id="about" class="about" aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
 
         <div class="about-text">
           <p class="lede">
@@ -164,14 +166,14 @@
 
         <img
           src="Images/carlos-6.jpg"
-          alt="Carlos holding a camera"
+          alt="Black and white portrait of Carlos looking through a Canon camera"
           loading="lazy"
         />
       </section>
 
-      <section id="contact" class="contact">
+      <section id="contact" class="contact" aria-labelledby="contact-title">
         <div class="contact-info">
-          <h2>Contact</h2>
+          <h2 id="contact-title">Contact</h2>
           <ul>
             <li>
               <a href="mailto:hello@carlosriviera.com"
