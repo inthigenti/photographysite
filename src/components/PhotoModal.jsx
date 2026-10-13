@@ -37,8 +37,8 @@ export function PhotoModal({
         />
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-4 text-sm">
-        <p>
+      <div className="grid grid-cols-1 items-center justify-items-center gap-4 text-sm sm:grid-cols-[1fr_auto_1fr]">
+        <p className="sm:justify-self-start">
           {photo.title}{" "}
           <span className="text-muted">
             {photo.category}, {photo.year}
@@ -47,7 +47,7 @@ export function PhotoModal({
 
         <StarRating value={rating} onChange={onRate} label={photo.title} />
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 sm:justify-self-end">
           <button
             type="button"
             onClick={onPrevious}
