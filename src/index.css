@@ -7,6 +7,21 @@
   --color-line: #e4e4e4; /* dividers and image placeholders */
   --font-display: "Anton", sans-serif; /* headings */
   --font-text: "DM Sans", sans-serif; /* everything else */
+
+  /* Side space on every section, used as px-gutter, left-gutter, etc. */
+  --spacing-gutter: clamp(16px, 2.2vw, 32px);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px; /* stop headings hiding under the sticky header */
+}
+
+/* Reduced motion: jump instead of gliding */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {
