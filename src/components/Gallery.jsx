@@ -29,7 +29,7 @@ export function Gallery() {
     <section
       id="work"
       aria-labelledby="work-title"
-      className="mx-auto max-w-[1100px] px-6 pb-20 lg:pb-32"
+      className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-32"
     >
       <div className="mb-6 flex flex-wrap items-baseline justify-between gap-4 lg:mb-10">
         <h2
@@ -48,8 +48,8 @@ export function Gallery() {
               onClick={() => setActiveCategory(category)}
               className={
                 activeCategory === category
-                  ? "text-text underline underline-offset-4"
-                  : "text-muted hover:text-text"
+                  ? "cursor-pointer text-text underline underline-offset-4"
+                  : "cursor-pointer text-muted hover:text-text"
               }
             >
               {category}

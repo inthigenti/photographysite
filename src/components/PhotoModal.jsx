@@ -14,7 +14,7 @@ export function PhotoModal({
     <div
       role="dialog"
       aria-label={`${photo.title}, full size`}
-      className="fixed inset-0 z-20 flex flex-col bg-bg px-6 py-4"
+      className="fixed inset-0 z-20 flex flex-col bg-bg px-4 py-4 sm:px-6 lg:px-8"
     >
       <div className="flex items-center justify-between text-sm">
         <p className="text-muted">
@@ -23,7 +23,7 @@ export function PhotoModal({
         <button
           type="button"
           onClick={onClose}
-          className="transition-colors hover:text-muted"
+          className="cursor-pointer transition-colors hover:text-muted"
         >
           Close
         </button>
@@ -51,14 +51,14 @@ export function PhotoModal({
           <button
             type="button"
             onClick={onPrevious}
-            className="transition-colors hover:text-muted"
+            className="cursor-pointer transition-colors hover:text-muted"
           >
             Previous
           </button>
           <button
             type="button"
             onClick={onNext}
-            className="transition-colors hover:text-muted"
+            className="cursor-pointer transition-colors hover:text-muted"
           >
             Next
           </button>

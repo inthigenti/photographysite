@@ -3,7 +3,7 @@ export function Header() {
     <header className="sticky top-0 z-10 bg-bg">
       <nav
         aria-label="Primary"
-        className="mx-auto flex max-w-[1100px] items-center justify-between px-6 py-4"
+        className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
       >
         <a href="#hero" className="font-medium">
           Carlos Riviera

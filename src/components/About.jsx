@@ -3,7 +3,7 @@ export function About() {
     <section
       id="about"
       aria-labelledby="about-title"
-      className="mx-auto grid max-w-[1100px] grid-cols-1 gap-6 px-6 pb-20 lg:grid-cols-3 lg:gap-x-4 lg:pb-32"
+      className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 pb-20 sm:px-6 lg:grid-cols-3 lg:gap-x-4 lg:px-8 lg:pb-32"
     >
       <h2
         id="about-title"

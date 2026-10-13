@@ -7,9 +7,6 @@
   --color-line: #e4e4e4; /* dividers and image placeholders */
   --font-display: "Anton", sans-serif; /* headings */
   --font-text: "DM Sans", sans-serif; /* everything else */
-
-  /* Side space on every section, used as px-gutter, left-gutter, etc. */
-  --spacing-gutter: clamp(16px, 2.2vw, 32px);
 }
 
 html {

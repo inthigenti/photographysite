@@ -10,7 +10,7 @@ export function StarRating({ value, onChange, label }) {
           aria-label={`${star} out of 5`}
           aria-pressed={value === star}
           onClick={() => onChange(star === value ? 0 : star)}
-          className={`transition-opacity ${star <= value ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
+          className={`cursor-pointer transition-opacity ${star <= value ? "opacity-100" : "opacity-40 hover:opacity-100"}`}
         >
           <img
             src={star <= value ? "/icons/star-fill.svg" : "/icons/star.svg"}
