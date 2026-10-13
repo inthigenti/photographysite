@@ -1,16 +1,29 @@
 import { useState } from "react";
 import { gallery } from "../data/gallery";
+import { PhotoModal } from "./PhotoModal";
 
 const categories = ["All", "Portrait", "Street", "Editorial", "Travel"];
 
 export function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [openPhotoId, setOpenPhotoId] = useState(null);
+  const [ratings, setRatings] = useState({});
 
   const visiblePhotos =
     activeCategory === "All"
       ? gallery
       : gallery.filter((photo) => photo.category === activeCategory);
+
+  // Which photo is open, and where it sits in the visible list
+  const openIndex = visiblePhotos.findIndex(
+    (photo) => photo.id === openPhotoId,
+  );
+  const openPhoto = visiblePhotos[openIndex];
+
+  // Loop round: Previous from the first photo goes to the last, and vice versa
+  const previousIndex =
+    openIndex === 0 ? visiblePhotos.length - 1 : openIndex - 1;
+  const nextIndex = openIndex === visiblePhotos.length - 1 ? 0 : openIndex + 1;
 
   return (
     <section
@@ -69,6 +82,21 @@ export function Gallery() {
           </figure>
         ))}
       </div>
+
+      {openPhoto && (
+        <PhotoModal
+          photo={openPhoto}
+          position={openIndex + 1}
+          total={visiblePhotos.length}
+          rating={ratings[openPhoto.id] || 0}
+          onRate={(newRating) =>
+            setRatings({ ...ratings, [openPhoto.id]: newRating })
+          }
+          onPrevious={() => setOpenPhotoId(visiblePhotos[previousIndex].id)}
+          onNext={() => setOpenPhotoId(visiblePhotos[nextIndex].id)}
+          onClose={() => setOpenPhotoId(null)}
+        />
+      )}
     </section>
   );
 }
