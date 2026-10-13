@@ -92,6 +92,25 @@ export function Contact() {
           </div>
         </div>
 
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="date" className="text-sm text-muted">
+            Preferred date (optional)
+          </label>
+          <div className="relative">
+            <input
+              type="date"
+              id="date"
+              name="date"
+              className={`${fieldClasses} pr-6 [&::-webkit-calendar-picker-indicator]:opacity-0`}
+            />
+            <img
+              src="/icons/calendar-blank.svg"
+              alt=""
+              className="pointer-events-none absolute top-1/2 right-0 size-4 -translate-y-1/2"
+            />
+          </div>
+        </div>
+
         <div className="flex flex-col gap-1.5 sm:col-span-2">
           <label htmlFor="message" className="text-sm text-muted">
             Message
