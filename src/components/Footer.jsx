@@ -1,7 +1,7 @@
 export function Footer() {
   return (
     <footer className="border-t border-line">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-baseline justify-between gap-x-8 gap-y-3 px-4 pt-6 pb-8 text-sm sm:px-6 lg:px-8">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-3 px-4 pt-6 pb-8 text-sm sm:px-6 lg:px-8">
         <p>&copy; 2026 Carlos Riviera</p>
 
         <ul className="flex flex-wrap gap-x-6 gap-y-1">

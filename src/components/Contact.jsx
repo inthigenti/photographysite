@@ -6,7 +6,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-3 lg:gap-x-4 lg:px-8 lg:pb-32"
+      className="grid grid-cols-1 gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-3 lg:gap-x-4 lg:px-8 lg:pb-32"
     >
       <div className="flex flex-col gap-5">
         <h2
