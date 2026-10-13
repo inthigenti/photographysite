@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { gallery } from "../data/gallery";
-import { SaveToggle } from "./SaveToggle";
 
 const categories = ["All", "Portrait", "Street", "Editorial", "Travel"];
 
 export function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [saved, setSaved] = useState({});
+  const [openPhotoId, setOpenPhotoId] = useState(null);
 
   const visiblePhotos =
     activeCategory === "All"
@@ -49,25 +48,24 @@ export function Gallery() {
       <div className="grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {visiblePhotos.map((photo) => (
           <figure key={photo.id} className="flex flex-col gap-2.5">
-            <img
-              src={photo.image}
-              alt={photo.alt}
-              loading="lazy"
-              className="aspect-[4/5] w-full bg-line object-cover"
-            />
+            <button
+              type="button"
+              onClick={() => setOpenPhotoId(photo.id)}
+              className="block cursor-zoom-in bg-line"
+            >
+              <img
+                src={photo.image}
+                alt={photo.alt}
+                loading="lazy"
+                className="aspect-[4/5] w-full object-cover transition-opacity hover:opacity-90"
+              />
+            </button>
             <figcaption className="flex justify-between gap-4 text-sm">
               <span>{photo.title}</span>
               <span className="text-muted">
                 {photo.category}, {photo.year}
               </span>
             </figcaption>
-            <SaveToggle
-              value={saved[photo.id] === true}
-              onChange={(newValue) =>
-                setSaved({ ...saved, [photo.id]: newValue })
-              }
-              label={photo.title}
-            />
           </figure>
         ))}
       </div>
