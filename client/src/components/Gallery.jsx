@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { gallery } from "../data/gallery";
+import { useEffect, useState } from "react";
 import { PhotoModal } from "./PhotoModal";
 
 const categories = ["All", "Portrait", "Street", "Editorial", "Travel"];
@@ -25,11 +24,31 @@ export function Gallery() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [openPhotoId, setOpenPhotoId] = useState(null);
   const [ratings, setRatings] = useState({});
+  const [photos, setPhotos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Load the photos from the API once, when the gallery first appears
+  useEffect(() => {
+    async function loadPhotos() {
+      try {
+        const res = await fetch("/api/photos");
+        if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+        const data = await res.json();
+        setPhotos(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    loadPhotos();
+  }, []);
 
   const visiblePhotos =
     activeCategory === "All"
-      ? gallery
-      : gallery.filter((photo) => photo.category === activeCategory);
+      ? photos
+      : photos.filter((photo) => photo.category === activeCategory);
 
   // Which photo is open, and where it sits in the visible list
   const openIndex = visiblePhotos.findIndex(
@@ -74,6 +93,9 @@ export function Gallery() {
           ))}
         </div>
       </div>
+
+      {loading && <p className="text-muted">Loading photos…</p>}
+      {error && <p className="text-muted">Couldn’t load photos: {error}</p>}
 
       <div
         className={`grid grid-cols-1 gap-x-4 gap-y-10 sm:grid-cols-2 lg:gap-y-14 ${
