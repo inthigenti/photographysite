@@ -11,7 +11,13 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 60px; /* stop headings hiding under the sticky header */
+  scroll-padding-top: 100px; /* stop headings hiding under the sticky header (2 rows on phones) */
+}
+
+@media (min-width: 640px) {
+  html {
+    scroll-padding-top: 72px; /* header is one row from sm up */
+  }
 }
 
 /* Reduced motion: jump instead of gliding */
